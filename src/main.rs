@@ -10,7 +10,6 @@ async fn main() -> Result<(), kube::Error> {
     let pods: Api<Pod> = Api::namespaced(client, "user-tsuksangwarn");
 
     let lp = ListParams::default()
-            .fields(&format!("metadata.name={}", "shell-demo"))
             .timeout(10);
     let mut stream = pods.watch(&lp, "0").await?.boxed();
 
